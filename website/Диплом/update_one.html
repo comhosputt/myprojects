@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	<script> 
+	//location.reload();
+		// Initialize Firebase
+		var config = {
+			apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+			authDomain: "add-1-bbd71.firebaseapp.com",
+			databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+			projectId: "add-1-bbd71",
+			storageBucket: "add-1-bbd71.appspot.com",
+			messagingSenderId: "G-9S5PLB8Q64"
+		};
+
+	   firebase.initializeApp(config);
+	   function save_txt()
+	{
+		var text_txt = document.getElementById('comment').value;
+		var data = {
+		text_txt: text_txt}
+		
+		document.write("dsf");
+		firebase.database().ref("text/"+key).update(data);
+			alert('Изменено!');
+
+	}
+
+
+	
+
+		var databaseRef = firebase.database().ref('text/');
+		var rowIndex = 1;
+		var n = "stud";
+
+
+		databaseRef.once('value', function(snapshot) {
+			document.write('<head><title>BookDiary</title><meta charset="utf-8"></head>');
+			document.write('<link rel="stylesheet" href="bootstrap.min.css">');
+			document.write('<link rel="stylesheet" href="style.css">');
+			document.write('<body style="background-image: url(hero_bg_5.jpg);" ><header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">');
+			
+			document.write('<div class="container">');
+			document.write('<div class="row align-items-center">');
+
+			document.write('<div class="col-11 col-xl-2 site-logo">');
+			document.write('<h1 class="mb-0"><a href="index2.html" class="text-white h2 mb-0">BookDiary</a></h1>');
+			document.write('</div>');
+			document.write('<div class="col-12 col-md-10 d-none d-xl-block">');
+			document.write('<nav class="site-navigation position-relative text-right" role="navigation">');
+
+			document.write('<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">');
+			document.write('<li><a href="#section-home" class="nav-link">Словарь терминов</a></li>');
+			document.write('<li><a href="#section-about" class="nav-link">Фанфики</a></li>');
+			document.write('<li><a href="#section-services" class="nav-link">Правила сайта</a></li>');
+			document.write('<li><a href="#section-industries" class="nav-link">Донат проекту</a></li>');
+			document.write('<li><a href="#section-blog" class="nav-link">Блог</a></li>');
+			document.write('<li><a href="#section-contact" class="nav-link">Войти</a></li>');
+			document.write('</ul>');
+			document.write('</nav>');
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</header>');
+
+
+			
+
+
+			document.write('<div class="site-section" id="section-about">');
+			document.write('<div class="container">');
+			document.write('<div class="row mb-5">');
+
+
+
+
+			document.write('</div>');
+			document.write('</div>');
+			document.write('</div>');
+			
+			var key=localStorage.getItem("key");
+		
+			snapshot.forEach(function(childSnapshot) {
+				var childData = childSnapshot.val();
+				var childKey = childSnapshot.key;
+				if (childKey==key){
+					document.write('<div class="container"  style="background-color:#ebfffb"; position: center; >');
+					document.write('<p style="white-space: pre-line; font-size:45px; color:#274a36; text-align: center;">'+childData.text_name+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Жанр: "+'</b>');
+					document.write(childData.text_janr+'</p>');
+					/*
+					document.write(childData.text_relationships);
+					document.write(childData.text_janr);
+					document.write(childData.text_pred);
+					document.write(childData.text_rating);
+					document.write(childData.text_status);
+					document.write(childData.text_volume);
+					document.write(childKey);*/
+					localStorage.setItem("key", childKey);
+					
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Описание: "+'</b>');
+					//document.write('<p style="white-space: pre-line"><a href="update1.html">'+childData.text_name+'</a></p>');
+					document.write('<p style="color: green">'+childData.text_opis+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"От автора: "+'</b>');
+					document.write('<p style="white-space: pre-line">'+childData.text_otautora+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36;text-align: center; "><b>'+"___________________________________________________________________________________"+'</b>');
+					document.write('<p><textarea name="comment" id="comment" cols="148" rows="50" placeholder="Введите дополнительные сведения:">'+childData.text_txt+'</textarea></p>');
+					document.write('<p><button onclick="save_txt()"  /></p>');
+					document.write('</div></body>');
+					
+				}
+				
+				rowIndex = rowIndex + 1;
+			});
+		});
+ 	</script>
+
+</html>

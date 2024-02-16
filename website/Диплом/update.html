@@ -1,0 +1,53 @@
+<html>
+<head>
+
+<title>Firebase</title>
+ 	
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script> 
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+  authDomain: "add-1-bbd71.firebaseapp.com",
+  databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+  projectId: "add-1-bbd71",
+  storageBucket: "add-1-bbd71.appspot.com",
+  messagingSenderId: "G-9S5PLB8Q64"
+	};
+
+   firebase.initializeApp(config);
+</script>
+</head>
+<body>
+ <script>
+	var databaseRef = firebase.database().ref('text/');
+	var rowIndex = 1;
+	var n = "stud";
+	var key=localStorage.getItem("key");
+
+	databaseRef.once('value', function(snapshot) {
+	snapshot.forEach(function(childSnapshot) {
+		var childData = childSnapshot.val();
+		var childKey = childSnapshot.key;
+		if (childKey==key){
+
+		document.write(childData.text_type);
+		document.write(childData.text_relationships);
+		document.write(childData.text_janr);
+		document.write(childData.text_pred);
+		document.write(childData.text_rating);
+		document.write(childData.text_status);
+		document.write(childData.text_volume);
+		document.write('<p style="white-space: pre-line">'+childData.text_name+'</p>');
+		document.write('<p style="white-space: pre-line">'+childData.text_opis+'</p>');
+		document.write('<p style="white-space: pre-line">'+childData.text_otautora+'</p>');
+		//document.write('<p style="white-space: pre-line">'+childData.text_txt+'</p>');
+		document.write('<p><textarea name="comment" id="comment" cols="180" rows="10" placeholder="Введите дополнительные сведения:">'+childData.text_txt+'</textarea></p>');
+		}
+		rowIndex = rowIndex + 1;
+	});
+	});
+ </script>
+ </form>
+</body>
+</html>

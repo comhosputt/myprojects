@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+	<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+	<script> 
+	//location.reload();
+		// Initialize Firebase
+		document.write('<link rel="icon" href="1.png" type="image/png">');
+		var config = {
+			apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+			authDomain: "add-1-bbd71.firebaseapp.com",
+			databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+			projectId: "add-1-bbd71",
+			storageBucket: "add-1-bbd71.appspot.com",
+			messagingSenderId: "G-9S5PLB8Q64"
+		};
+
+	   firebase.initializeApp(config);
+
+
+	
+
+		var databaseRef = firebase.database().ref('text/');
+		var rowIndex = 1;
+		var n = "stud";
+		localStorage.setItem("vibor", "two");
+		
+		function num(Element) {
+
+	
+	alert(Element);
+	
+	var databaseRef1 = firebase.database().ref('text/');
+	var rowIndex = 1;
+	
+
+	databaseRef1.once('value', function(snapshot) {
+	snapshot.forEach(function(childSnapshot) {
+		var childData = childSnapshot.val();
+		var childKey = childSnapshot.key;
+		if (childData.text_name==Element){
+	
+		localStorage.setItem("key", childKey);
+		window.location='read_one1.html'
+		}
+
+		rowIndex = rowIndex + 1;
+	});
+	});
+	
+	
+
+	/*if (Element.style.color == 'green') Element.style.color = 'red';
+	else Element.style.color = 'green';
+	return false;*/
+}
+
+
+		databaseRef.once('value', function(snapshot) {
+			document.write('<head><title>Читательский дневник</title><meta charset="utf-8"></head>');
+			document.write('<link rel="stylesheet" href="bootstrap.min.css">');
+			document.write('<link rel="stylesheet" href="style.css">');
+			document.write('<link rel="icon" href="1.png" type="image/png">');
+			document.write('<body data-spy="scroll"><header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">');
+			
+			document.write('<div class="container">');
+			document.write('<div class="row align-items-center">');
+			
+			
+
+			document.write('<div class="col-11 col-xl-2 site-logo">');
+			document.write('<h1 class="mb-0"><a href="index2.html" class="text-white h2 mb-0">Дневник</a></h1>');
+			document.write('</div>');
+			document.write('<div class="col-12 col-md-10 d-none d-xl-block">');
+			document.write('<nav class="site-navigation position-relative text-right" role="navigation">');
+
+			document.write('<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">');
+			document.write('<li><a href="termin.html" class="nav-link">Словарь терминов</a></li>');
+			//document.write('<li><a href="pravila.html" class="nav-link">Цитаты</a></li>');
+			//document.write('<li><a href="donat.html" class="nav-link">Дневник</a></li>');
+			document.write('<li><a href="poisk.html" class="nav-link">Поиск</a></li>');
+			document.write('<li><a href="vhod.html" class="nav-link">Войти</a></li>');
+			document.write('</ul>');
+			document.write('</nav>');
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</header>');
+
+
+			document.write('<div class="site-blocks-cover overlay" style="background-image: url(hero_bg_2.jpg);"  id="section-home">');
+			document.write('<div class="container">');
+			document.write('<div class="row align-items-center justify-content-center text-center">');
+
+			document.write('<div class="col-md-8"  >');
+
+
+			document.write('<h1 class="text-white font-weight-light text-uppercase font-weight-bold" >Читательский Дневник</h1>');
+			document.write('<p class="mb-5" >Читай сочиняй наслаждайся</p>');
+			//document.write('<p ><a href="https://free-template.co" class="btn btn-primary py-3 px-5 text-white">Get Started!</a></p>');
+
+			document.write('</div>');
+			document.write('</div>');
+			document.write('</div>');
+			document.write('</div>');  
+
+
+
+		//	document.write('<div class="site-section" id="section-about">');
+		//	document.write('<div class="container">');
+		//	document.write('<div class="row mb-5">');
+
+
+
+
+			document.write('</div>');
+			document.write('</div>');
+			document.write('</div>');
+			snapshot.forEach(function(childSnapshot) {
+				var childData = childSnapshot.val();
+				var childKey = childSnapshot.key;
+				
+				document.write('<body style="background-image: url(3.jpg);" ><header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">');
+				document.write('<div class="container"  style="background-color: #f1f9ee; position: center; opacity:0.8; ">');
+				/*document.write('<input type="button" name="Button1" style="white-space: pre-line;  display: flex; justify-content: center;font-size:45px; color:#274a36; text-align: center;  background-color: Transparent; background-repeat:no-repeat;" value="'+childData.text_name+'" onclick="num(value);">');
+				*/
+				document.write('<input type="button" style=" margin: auto;  display: block; font-size: 45px;  background-color: transparent; border: none; color: #274a36;  text-align:center; " name="Button1" value="'+childData.text_name+'" onclick="num(value);">');
+		
+					//document.write('<p style="white-space: pre-line; font-size:45px; color:#274a36; text-align: center;">'+childData.text_name+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Жанр: "+'</b>');
+					document.write(childData.text_janr+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Предупреждения: "+'</b>');
+					document.write(childData.text_pred+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Взаимоотношения: "+'</b>');
+					document.write(childData.text_relationships+'</p>');
+				
+					//localStorage.setItem("key", childKey);
+					
+					//document.write('<p style="white-space: pre-line; color:#274a36; "><b>'+"Описание: "+'</b>');
+				
+					//document.write('<p style="color: green">'+childData.text_opis+'</p>');
+					
+					document.write('<p style="white-space: pre-line; color:#274a36;text-align: center; "><b>'+"___________________________________________________________________________________"+'</b>');
+					
+					document.write('<p style="white-space: pre-line; color:#274a36; text-align: center;">'+childData.text_opis+'</p>');
+					document.write('<p style="white-space: pre-line; color:#274a36;text-align: center; "><b>'+"_"+'</b>');
+					//document.write('<p style="color:#000000; position: center; ">'+childData.text_opis+'</p>');
+					document.write('</div></body>');
+				
+				
+				
+				rowIndex = rowIndex + 1;
+			});
+		});
+ 	</script>
+
+</html>

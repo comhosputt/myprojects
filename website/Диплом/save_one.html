@@ -1,0 +1,306 @@
+<html>
+<head>
+ <link rel="icon" href="1.png" type="image/png">
+<title>Добавить</title>
+
+ 	
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script> 
+	// Initialize Firebase
+	var config = {
+		apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+  authDomain: "add-1-bbd71.firebaseapp.com",
+  databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+  projectId: "add-1-bbd71",
+  storageBucket: "add-1-bbd71.appspot.com",
+  messagingSenderId: "G-9S5PLB8Q64"
+	};
+
+   firebase.initializeApp(config);
+</script>
+</head>
+<body>
+ <script>
+	var databaseRef = firebase.database().ref('text/');
+	var rowIndex = 1;
+	var n = "stud";
+	var key=localStorage.getItem("key");
+	
+	function save_txt()
+	{
+		var text_txt = document.getElementById('comment').value;
+		var data = {
+		text_txt: text_txt}
+		
+		document.write("dsf");
+		firebase.database().ref("text/"+key).update(data);
+			alert('Изменено!');
+
+	}
+ </script>
+  <script>
+	var databaseRef = firebase.database().ref('text/');
+	var rowIndex = 1;
+	var n = "stud";
+	var usname=localStorage.getItem("usname");
+		//alert(usname);
+
+			document.write('<head><title>Добавить</title><meta charset="utf-8"></head>');
+			document.write('<link rel="stylesheet" href="bootstrap.min.css">');
+			document.write('<link rel="stylesheet" href="style.css">');
+			document.write('<link rel="stylesheet" href="fonts/icomoon/style.css">');
+			document.write('<link rel="icon" href="1.png" type="image/png">');
+			document.write('<body style="background-color:#0a2017" ><header class="site-navbar py-3 js-site-navbar site-navbar-target" role="banner" id="site-navbar">');
+			
+			document.write('<div class="container">');
+			document.write('<div class="row align-items-center">');
+
+			document.write('<div class="col-11 col-xl-2 site-logo">');
+			document.write('<h1 class="mb-0"><a href="index3.html" class="text-white h2 mb-0">Дневник</a></h1>');
+			document.write('</div>');
+			document.write('<div class="col-12 col-md-10 d-none d-xl-block">');
+			document.write('<nav class="site-navigation position-relative text-right" role="navigation">');
+
+			document.write('<ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">');
+			document.write('<li><a href="termin.html" class="nav-link">Словарь терминов</a></li>');
+			document.write('<li><a href="pravila.html" class="nav-link">Цитаты</a></li>');
+			document.write('<li><a href="donat.html" class="nav-link">Дневник</a></li>');
+			
+			
+			
+			
+			
+			
+			document.write('<li><a href="poisk.html" class="nav-link">Поиск</a></li>');
+			
+			document.write('<li class="has-children">');
+            document.write('<a href="#section-about" class="nav-link">'+usname+'</a>');
+            document.write(' <ul class="dropdown">');
+            document.write('  <li><a href="mou_raboti.html" class="nav-link">Мои работы</a></li>');
+            document.write(' <li><a href="save_one.html" class="nav-link">Создать новую</a></li>');
+			document.write(' <li><a href="index2.html" class="nav-link">Выйти</a></li>');
+			document.write('</ul>');
+			
+			
+			
+			
+			document.write('</nav>');
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</div>');
+			document.write('</div>');
+
+			document.write('</header>');
+
+
+			
+
+
+			document.write('<div class="site-section" id="section-about">');
+			document.write('<div class="container">');
+			document.write('<div class="row mb-5">');
+
+
+
+
+			document.write('</div>');
+			document.write('</div>');
+			document.write('</div>');
+			
+			document.write('<div class="container"  style="background-color:#f1f9ee"; position: center; >');
+			document.write('<p style="white-space: pre-line; color:#274a36;text-align: center; "><b>'+"___________________________________________________________________________________"+'</b>');
+			
+			
+			
+			
+			document.write('<p><b>Тип</b></p>');
+			document.write('<p><input name="type" id="type" type="radio" value="По мотивам" checked>По мотивам</p>');
+			document.write('<p><input name="type" id="type" type="radio" value="Ориджинал">Ориджинал</p>');
+			
+			
+			document.write('<p><b>Взаимоотношения</b></p>');
+			document.write('<input name="relationships" id="relationships" type="radio" value="Без взаимоотношений" checked>Без взаимоотношений');
+			document.write('<input name="relationships" style="margin-left:40px;" id="relationships" type="radio" value="Есть взаимоотношения" checked>Есть взаимоотношения');
+			document.write('<input name="relationships" style="margin-left:40px;" id="relationships" type="radio" value="Статья" checked>Статья');
+			document.write('<input name="relationships" style="margin-left:40px;" id="relationships" type="radio" value="Смешанная" checked>Смешанная</p>');
+			
+			
+			document.write('<p><b>Жанры:</b></p>');
+			document.write('<input type="checkbox"  id="janr" value="Драма" name="janr[]">Драма');
+			document.write('<input type="checkbox" style="margin-left:40px;" id="janr" value="Мистика" name="janr[]">Мистика');
+			document.write('<input type="checkbox" style="margin-left:40px;" id="janr" value="Поэзия" name="janr[]">Поэзия');
+			document.write('<input type="checkbox" style="margin-left:40px;" id="janr" value="Приключения" name="janr[]">Приключения');
+			document.write('<input type="checkbox" style="margin-left:40px;" id="janr" value="Сказка" name="janr[]">Сказка');
+			document.write('<input type="checkbox" style="margin-left:40px;" id="janr" value="Трагедия" name="janr[]">Трагедия</p>');
+
+
+			document.write('<p><b>Предупреждения:</b></p>');
+			document.write('<input type="checkbox" id="pred" value="Фантастика" name="pred[]">Фантастика');
+			document.write('<input type="checkbox"  style="margin-left:40px;" id="pred" value="Реализм" name="pred[]">Реализм</p>');
+			
+			
+			document.write('<p><b>Рейтинг</b></p>');
+			document.write('<input name="rating" id="rating" type="radio" value="0+" checked>0+');
+			document.write('<input name="rating" style="margin-left:40px;" id="rating" type="radio" value="6+">6+');
+			document.write('<input name="rating" style="margin-left:40px;" id="rating" type="radio" value="12+" checked>12+');
+			document.write('<input name="rating" style="margin-left:40px;" id="rating" type="radio" value="16+">16+</p>');
+			
+			
+			document.write('<p><b>Статус:</b></p>');
+			document.write('<p><input name="status" id="status" type="radio" value="Пишется" checked>Пишется</p>');
+			document.write('<p><input name="status" id="status" type="radio" value="Завершен">Завершен</p>');
+			document.write('<p><input name="status" id="status" type="radio" value="Заморожен" checked>Заморожен</p>');
+			
+			document.write('<p><b>Размер:</b></p>');
+			document.write('<p><input name="volume" id="volume" type="radio" value="Мини">Мини</p>');
+			document.write('<p><input name="volume" id="volume" type="radio" value="Миди" checked>Миди</p>');
+			document.write('<p><input name="volume" id="volume" type="radio" value="Макси">Макси</p>');
+			
+						
+			document.write('<p>Название</p>');
+			document.write('<input type="text" name="name" id="name"></p>');
+			
+			document.write('<p>Описание:</p>');
+			document.write('<p><textarea name="opis" id="opis" style="white-space: pre-line; resize: none;" cols="148" rows="10" placeholder="Начните писать..."></textarea></p>');
+			
+			document.write('<p>От автора:</p>');
+			document.write('<p><textarea name="otautora" id="otautora" style="white-space: pre-line; resize: none;"  cols="148" rows="10" placeholder="Начните писать..."></textarea></p>');
+			
+			document.write('<p>Текст:</p>');
+			document.write('<p><textarea name="txt" id="txt" style="white-space: pre-line; resize: none; " cols="148" rows="20" placeholder="Начните писать..."></textarea></p>');
+			
+			
+			document.write('<p><input class="button_format" style=" position: relative; left: 40%; background-color:#0a2017; margin-top: 28px;width: 180px; height: 32px;  border: none; color: #FFF;  text-transform: uppercase; text-align:center; " type="submit" name="submit" value="Сохранить" onclick="save_txt();" /></p>');
+
+					document.write('</div></body>');
+					
+					 var databaseRef = firebase.database().ref('text/');
+			var rowIndex = 1;
+			var n = "stud";
+				
+			function save_txt()
+			{
+				
+				
+				var rad1 = document.getElementsByName('type');
+				var text_type;
+				for (var i=0; i<rad1.length; i++) {
+					if (rad1[i].checked) {
+					text_type = rad1[i].value;
+				}
+				}
+				
+				
+				var rad2 = document.getElementsByName('relationships');
+				var text_relationships;
+				for (var i=0; i<rad2.length; i++) {
+					if (rad2[i].checked) {
+					text_relationships = rad2[i].value;
+				}
+				}
+				
+				var checkboxes1 = document.getElementsByName('janr[]');
+				var text_janr = ""; 
+				for (var index = 0; index < checkboxes1.length; index++) {
+					if (checkboxes1[index].checked) {
+						text_janr += checkboxes1[index].value + " ";
+					}
+				}
+				
+				var checkboxes2 = document.getElementsByName('pred[]');
+				var text_pred = ""; 
+				for (var index = 0; index < checkboxes2.length; index++) {
+					if (checkboxes2[index].checked) {
+						text_pred += checkboxes2[index].value + " ";
+					}
+				}
+
+
+				var rad3 = document.getElementsByName('rating');
+				var text_rating;
+				for (var i=0; i<rad3.length; i++) {
+					if (rad3[i].checked) {
+					text_rating = rad3[i].value;
+				}
+				}
+				
+				var rad4 = document.getElementsByName('status');
+				var text_status;
+				for (var i=0; i<rad4.length; i++) {
+					if (rad4[i].checked) {
+					text_status = rad4[i].value;
+				}
+				}
+
+				var rad5 = document.getElementsByName('volume');
+				var text_volume;
+				for (var i=0; i<rad5.length; i++) {
+					if (rad5[i].checked) {
+					text_volume = rad5[i].value;
+				}
+				}		
+		  
+		  
+				var text_name = document.getElementById('name').value;
+				
+				var text_opis = document.getElementById('opis').value;
+				
+				var text_otautora = document.getElementById('otautora').value;
+				
+				var text_txt = document.getElementById('txt').value;
+			
+				/*var uid = firebase.database().ref().child('text').push().key;
+				n += uid;*/
+				
+				qq = localStorage.getItem('id');
+				//id
+				if (qq == 0 || qq == "" || qq == null) {
+					qq = 1;
+					localStorage.setItem('id', qq);
+				} else {
+					qq = Number(qq) + 1;
+					localStorage.setItem('id', qq);
+				}
+				var id = Number(localStorage.getItem('id'));
+				
+				
+				var data = {
+				text_type: text_type,
+				text_relationships: text_relationships,
+				text_janr: text_janr,
+				text_pred: text_pred,
+				text_rating: text_rating,
+				text_status: text_status,
+				text_volume: text_volume,
+				text_name: text_name,
+				text_opis: text_opis,
+				text_otautora: text_otautora,
+				text_txt: text_txt,
+				text_nameautor: usname
+				}
+				
+			
+				if (text_name==""||text_type==""||text_relationships==""|| text_janr==""||text_pred==""||text_rating==""||text_status==""||text_volume==""||text_opis==""||text_otautora==""||text_txt=="")
+				{
+					alert ( "Пожалуйста заполните все поля." );
+				}
+				else{
+					//var updates = {};
+					//updates['/text/' + n] = data;
+					//firebase.database().ref().update(updates);
+					firebase.database().ref("text/"+id).set(data);
+					alert('Данные успешно добавлены!');
+					window.location='file:///C:/Users/User/Desktop/7 СЕМЕСТР/КУРСОВАЯ_ВЕБ/html/mou_raboti.html'
+	
+					//reload_page();
+				}
+		   
+		   
+			}
+
+			
+	
+ </script>
+</body>
+</html>

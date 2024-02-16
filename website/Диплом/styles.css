@@ -1,0 +1,74 @@
+.rating-area {
+	overflow: hidden;
+	width: 265px;
+	margin: 0 auto;
+}
+.rating-area:not(:checked) > input {
+	display: none;
+}
+.rating-area:not(:checked) > label {
+	float: right;
+	width: 42px;
+	padding: 0;
+	cursor: pointer;
+	font-size: 32px;
+	line-height: 32px;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-area:not(:checked) > label:before {
+	content: '★';
+}
+.rating-area > input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+.rating-area:not(:checked) > label:hover,
+.rating-area:not(:checked) > label:hover ~ label {
+	color: gold;
+}
+.rating-area > input:checked + label:hover,
+.rating-area > input:checked + label:hover ~ label,
+.rating-area > input:checked ~ label:hover,
+.rating-area > input:checked ~ label:hover ~ label,
+.rating-area > label:hover ~ input:checked ~ label {
+	color: gold;
+	text-shadow: 1px 1px goldenrod;
+}
+.rate-area > label:active {
+	position: relative;
+}
+
+
+
+  .layer1 {
+    width: 475px; /* Ширина слоя */
+   }
+   .layer2 {
+    
+    width: 300px; /* Ширина слоя */
+    float: right; /* Обтекание по правому краю */
+   }
+
+* {
+  box-sizing: border-box;
+}
+
+.box {
+  display: inline-block;
+  width: 465px;
+  height: 300px;
+ 
+  color: white;
+
+margin-left: 500px;
+margin-top: 90px;
+
+ position: absolute;
+  top: 0;
+  left: 0;
+ 
+}
+
+
+img{ height: 200px; width: 200px; border: 2px solid black;}

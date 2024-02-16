@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Регистрация</title>
+<link rel="stylesheet" href="cssFile.css">
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="icon" href="1.png" type="image/png">
+</head>
+
+<body> 
+ <div class="site-blocks-cover overlay" style="background-image: url(hero_bg_2.jpg);">
+  
+
+  <div style="position: absolute; left: 40%; top:15%;">
+    <h1 style= "font-size:35px; color:#FFF; text-align: center;">Регистрация</h1>
+	<input type="text" id="username" name="username" placeholder="Имя пользователя" />
+    <input type="text" id="email" name="email" placeholder="Электронная почта" />
+    <input type="password" id="password" name="password" placeholder="Пароль" />
+    
+    <input type="submit" id='login' name="login" value="Зарегистрироваться" />
+	<p style="color:#FFFFF; text-align: center;" ><a href="vhod.html" style="color: #ffffff">Войти</a></p>
+
+  </div>
+  </div>
+  
+  
+
+</body>
+
+<script type="module">
+
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-app.js";
+  import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-database.js";
+  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, sendEmailVerification  } from "https://www.gstatic.com/firebasejs/9.4.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+  authDomain: "add-1-bbd71.firebaseapp.com",
+  databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+  projectId: "add-1-bbd71",
+  storageBucket: "add-1-bbd71.appspot.com",
+  messagingSenderId: "223505504290",
+  appId: "1:223505504290:web:5351bfc8957fca10efd27b",
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  const auth = getAuth();
+
+
+login.addEventListener('click',(e) => {
+
+  var email = document.getElementById('email').value;
+  var password = document.getElementById('password').value;
+  var username = document.getElementById('username').value;
+
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+
+     /* set(ref(database, 'users/' + user.uid),{
+          username: username,
+          email: email
+      })
+*/
+
+sendEmailVerification(auth.currentUser)
+        .then(() => {
+    // Email verification sent!
+    // ...
+        });
+      alert('Вы зарегистрировались! Проверьте электронную почту.');
+	 
+	   // 
+      // ...
+    })
+	 
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+
+      //alert(errorMessage);
+	  alert('Данная электронная почта уже есть в системе! Попробуйте другую.');
+    // ..
+    });
+
+});
+
+</script>
+
+</html>

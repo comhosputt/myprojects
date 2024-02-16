@@ -1,0 +1,221 @@
+<html>
+<head>
+
+<title>Firebase</title>
+
+ 
+<script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+<script> 
+	// Initialize Firebase
+	var config = {
+	  apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+	  authDomain: "add-1-bbd71.firebaseapp.com",
+	  databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+	  projectId: "add-1-bbd71",
+	  storageBucket: "add-1-bbd71.appspot.com",
+	  messagingSenderId: "G-9S5PLB8Q64"
+	};
+
+   firebase.initializeApp(config);
+</script>
+ 
+</head>
+
+
+<body>
+<form  method="post" id="form">
+
+	
+	
+	<p><b>Тип</b></p>
+	<p><input name="type" id="type" type="radio" value="Фанфик" checked>Фанфик</p>
+	<p><input name="type" id="type" type="radio" value="Ориджинал">Ориджинал</p>
+	
+	
+	<p><b>Взаимоотношения</b></p>
+	<p><input name="relationships" id="relationships" type="radio" value="Джен" checked>Джен</p>
+	<p><input name="relationships" id="relationships" type="radio" value="Гет" checked>Гет</p>
+	<p><input name="relationships" id="relationships" type="radio" value="Статья" checked>Статья</p>
+	<p><input name="relationships" id="relationships" type="radio" value="Смешанная" checked>Смешанная</p>
+	
+	
+	<p><b>Жанры:</b></p>
+	<p><input type="checkbox" id="janr" value="Драма" name="janr[]">Драма<br></p>
+	<p><input type="checkbox" id="janr" value="Мистика" name="janr[]">Мистика</p>
+	<p><input type="checkbox" id="janr" value="Поэзия" name="janr[]">Поэзия</p>
+	<p><input type="checkbox" id="janr" value="Приключения" name="janr[]">Приключения</p>
+	<p><input type="checkbox" id="janr" value="Сказка" name="janr[]">Сказка</p>
+	<p><input type="checkbox" id="janr" value="Реализм" name="janr[]">Реализм<br></p>
+
+
+	<p><b>Предупреждения:</b></p>
+	<p><input type="checkbox" id="pred" value="ООС" name="pred[]">ООС<br></p>
+	<p><input type="checkbox" id="pred" value="AU" name="pred[]">AU</p>
+	
+	
+	<p><b>Рейтинг</b></p>
+	<p><input name="rating" id="rating" type="radio" value="PG-13" checked>PG-13</p>
+	<p><input name="rating" id="rating" type="radio" value="G">G</p>
+	<p><input name="rating" id="rating" type="radio" value="R" checked>R</p>
+	<p><input name="rating" id="rating" type="radio" value="NC-17">NC-17</p>
+	
+	
+	<p><b>Статус:</b></p>
+	<p><input name="status" id="status" type="radio" value="Пишется" checked>Пишется</p>
+	<p><input name="status" id="status" type="radio" value="Завершен">Завершен</p>
+	<p><input name="status" id="status" type="radio" value="Заморожен" checked>Заморожен</p>
+
+	
+	<p><b>Размер:</b></p>
+	<p><input name="volume" id="volume" type="radio" value="Мини">Мини</p>
+	<p><input name="volume" id="volume" type="radio" value="Миди" checked>Миди</p>
+	<p><input name="volume" id="volume" type="radio" value="Макси">Макси</p>
+	
+				
+	<p>Название</p>
+	<input type="text" name="name" id="name"></p>
+	
+	<p>Описание:</p>
+	<p><textarea name="opis" id="opis" cols="180" rows="10" placeholder="Начните писать..."></textarea></p>
+	
+	<p>От автора:</p>
+	<p><textarea name="otautora" id="otautora" cols="180" rows="10" placeholder="Начните писать..."></textarea></p>
+	
+	<p>Текст:</p>
+	<p><textarea name="txt" id="txt" style="white-space: pre-line" cols="180" rows="10" placeholder="Начните писать..."></textarea></p>
+	
+	
+	<p><input class="button_format" type="submit" name="submit" value="Сохранить" onclick="save_txt();" /></p>
+	
+
+ 
+
+ 
+ <script>
+
+    var databaseRef = firebase.database().ref('text/');
+	var rowIndex = 1;
+	var n = "stud";
+		
+	function save_txt()
+	{
+		
+		
+		var rad1 = document.getElementsByName('type');
+		var text_type;
+		for (var i=0; i<rad1.length; i++) {
+			if (rad1[i].checked) {
+			text_type = rad1[i].value;
+		}
+		}
+		
+		
+		var rad2 = document.getElementsByName('relationships');
+		var text_relationships;
+		for (var i=0; i<rad2.length; i++) {
+			if (rad2[i].checked) {
+			text_relationships = rad2[i].value;
+		}
+		}
+		
+		var checkboxes1 = document.getElementsByName('janr[]');
+		var text_janr = ""; 
+		for (var index = 0; index < checkboxes1.length; index++) {
+			if (checkboxes1[index].checked) {
+				text_janr += checkboxes1[index].value + " ";
+			}
+		}
+		
+		var checkboxes2 = document.getElementsByName('pred[]');
+		var text_pred = ""; 
+		for (var index = 0; index < checkboxes2.length; index++) {
+			if (checkboxes2[index].checked) {
+				text_pred += checkboxes2[index].value + " ";
+			}
+		}
+
+
+		var rad3 = document.getElementsByName('rating');
+		var text_rating;
+		for (var i=0; i<rad3.length; i++) {
+			if (rad3[i].checked) {
+			text_rating = rad3[i].value;
+		}
+		}
+		
+		var rad4 = document.getElementsByName('status');
+		var text_status;
+		for (var i=0; i<rad4.length; i++) {
+			if (rad4[i].checked) {
+			text_status = rad4[i].value;
+		}
+		}
+
+		var rad5 = document.getElementsByName('volume');
+		var text_volume;
+		for (var i=0; i<rad5.length; i++) {
+			if (rad5[i].checked) {
+			text_volume = rad5[i].value;
+		}
+		}		
+  
+  
+		var text_name = document.getElementById('name').value;
+		
+		var text_opis = document.getElementById('opis').value;
+		
+		var text_otautora = document.getElementById('otautora').value;
+		
+		var text_txt = document.getElementById('txt').value;
+	
+		/*var uid = firebase.database().ref().child('text').push().key;
+		n += uid;*/
+		
+		qq = localStorage.getItem('id');
+		//id
+		if (qq == 0 || qq == "" || qq == null) {
+			qq = 1;
+			localStorage.setItem('id', qq);
+		} else {
+			qq = Number(qq) + 1;
+			localStorage.setItem('id', qq);
+		}
+		var id = Number(localStorage.getItem('id'));
+		
+		
+		var data = {
+		text_type: text_type,
+		text_relationships: text_relationships,
+		text_janr: text_janr,
+		text_pred: text_pred,
+		text_rating: text_rating,
+		text_status: text_status,
+		text_volume: text_volume,
+		text_name: text_name,
+		text_opis: text_opis,
+		text_otautora: text_otautora,
+		text_txt: text_txt
+		}
+		
+	
+		/*if (text_name==""||text_type==""||text_relationships==""|| text_janr==""||text_pred==""||text_rating==""||text_status==""||text_volume==""||text_opis==""||text_otautora==""||text_txt=="")
+        {
+            alert ( "Пожалуйста заполните все поля." );
+        }
+		else{*/
+			//var updates = {};
+			//updates['/text/' + n] = data;
+			//firebase.database().ref().update(updates);
+			firebase.database().ref("text/"+id).set(data);
+			alert('Данные успешно добавлены!');
+			//reload_page();
+		//}
+   
+   
+	}
+
+
+ </script>
+ </form>
+</body>
+</html>

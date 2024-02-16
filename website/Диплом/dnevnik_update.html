@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link rel="icon" href="1.png" type="image/png">
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-storage.js"></script>
+  <script>
+    var config = {
+      apiKey: "AIzaSyC15IP3kl_6Cd99HZW0xUzAm-BZ15HVrDs",
+      authDomain: "add-1-bbd71.firebaseapp.com",
+      databaseURL: "https://add-1-bbd71-default-rtdb.firebaseio.com",
+      projectId: "add-1-bbd71",
+      storageBucket: "add-1-bbd71.appspot.com",
+      messagingSenderId: "G-9S5PLB8Q64"
+    };
+    firebase.initializeApp(config);
+  </script>
+</head>
+
+<body>
+  <script>
+  
+    var databaseRef1 = firebase.database().ref('users/');
+    databaseRef1.once('value', function(snapshot) {
+      snapshot.forEach(function(childSnapshot) {
+        var childData = childSnapshot.val();
+        var childKey = childSnapshot.key;
+        if (childKey == name) {
+          usname = childData.username;
+          email = childData.email;
+           
+          localStorage.setItem("usname", usname);
+          localStorage.setItem("uid", name);
+          localStorage.setItem("vibor", "three");
+        }
+        rowIndex1 = rowIndex1 + 1;
+      });
+    });
+    var ImgName, ImgUrl, ImgImg;
+    var files = [];
+    var reader;
+    var databaseRef = firebase.database().ref('Diary/');
+    var rowIndex = 1;
+    var rowIndex1 = 1;
+    var Index = 1;
+    var n = "stud";
+    var name = localStorage.getItem("name");
+    var email;
+	
+	
+	var rowIndex = 1;
+	var n = "stud";
+	var key=localStorage.getItem("key");
+	//alert(key);
+	
+	/*function save_txt()
+	{
+		var text_txt = document.getElementById('comment').value;
+		var data = {
+		text_txt: text_txt}
+		
+		
+		firebase.database().ref("Quote/"+key).update(data);
+			alert('Изменено!');
+			window.location='file:///C:/Users/User/Desktop/7 СЕМЕСТР/КУРСОВАЯ_ВЕБ/html/mou_raboti.html'
+
+	}*/
+	
+  
+    databaseRef.once('value', function(snapshot) {
+      document.write('<head>');
+      document.write('<title>Изменить информацию о книге</title><meta charset="utf-8">');
+      document.write('<link rel="stylesheet" href="fonts/icomoon/style.css">');
+      document.write('<link rel="stylesheet" href="bootstrap.min.css"> ');
+      document.write('<link rel="stylesheet" href="style.css"> ');
+      document.write('<link rel="stylesheet" href="styles.css"> ');
+      document.write('<link rel="icon" href="1.png" type="image/png"> ');
+      document.write('</head> ');
+      document.write('<body style="background-image: url(3.jpg);" ><header style="background-color:#0a2017" class="site-navbar py-3 js-site-navbar site-navbar-target" > ');
+      document.write('<div class="container"> ');
+      document.write('<div class="row align-items-center"> ');
+      document.write('<div class="col-11 col-xl-2 site-logo"> ');
+      document.write(' <h1 class="mb-0"><a href="index3.html" class="text-white h2 mb-0">Дневник</a></h1> ');
+      document.write('</div> ');
+      document.write('<div class="col-12 col-md-10 d-none d-xl-block"> ');
+      document.write(' <nav class="site-navigation position-relative text-right" role="navigation"> ');
+      document.write(' <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block"> ');
+      document.write(' <li><a href="termin.html" class="nav-link">Словарь терминов</a></li> ');
+      document.write(' <li><a href="pravila.html" class="nav-link">Цитаты</a></li> ');
+      document.write(' <li><a href="donat.html" class="nav-link">Дневник</a></li> ');
+      document.write('<li><a href="poisk.html" class="nav-link">Поиск</a></li>');
+      document.write('<li class="has-children">');
+      document.write('<a href="#section-about" class="nav-link">' + usname + '</a>');
+      document.write(' <ul class="dropdown">');
+      document.write(' <li><a href="mou_raboti.html" class="nav-link">Мои работы</a></li>');
+      document.write(' <li><a href="save_one.html" class="nav-link">Создать новую</a></li>');
+      document.write(' <li><a href="index2.html" class="nav-link">Выйти</a></li>');
+      document.write('</ul>');
+      document.write('</ul>');
+      document.write('</nav> ');
+      document.write(' </div> ');
+      document.write(' </div> ');
+      document.write(' </div> ');
+      document.write('</div> ');
+      document.write('</header> ');
+      document.write('</div>');
+      document.write('</div>');
+      document.write('</div>');
+      document.write(' <div class="container" style="background-color:#f1f9eeж">');
+      document.write(' <div class="row justify-content-center mb-5" data-aos="fade-up">');
+      document.write(' <div class="col-md-7 text-center border-primary">');
+      document.write(' <h2 style="color: #f1f9ee; font-size: 45px; opacity:0; "> vcx </h2>');
+      document.write(' <h2 style="color: #f1f9ee; font-size: 45px; opacity:0; "> vcx </h2>');
+      document.write(' <h2 style="color: #ffffff; ">Изменить информацию о книге</h2>');
+      document.write(' </div>');
+      document.write(' </div>');
+	  
+	  
+	  
+	  snapshot.forEach(function(childSnapshot) {
+	var childData = childSnapshot.val();
+				var childKey = childSnapshot.key;
+				//alert("1"+childKey);
+				//alert("2"+key);
+				if (childKey==key){
+			
+      document.write('<div style="background-color:#ffffff; opacity:0.9; border-radius: 20px;border-width: 5px; margin-left: auto; margin-right: auto;" class="row mb-5">');
+      document.write(' <h2 style="color: #f1f9ee; font-size: 45px; opacity:0; "> vcx </h2>');
+      document.write('<div class="row align-items-stretch">');
+      document.write('<div class="col-md-6 col-lg-4 mb-4 mb-lg-4" data-aos="fade-up">');
+      document.write(' <h2 style="color: #f1f9ee; font-size: 20px; opacity:0; "> vcx </h2>');
+      document.write('<center><input type="text" name="name" placeholder="Введите название" style="width:950px; " id="name"></center>');
+	  document.getElementById("name").value=childData.name;
+	  	//alert("DJIKB");
+      document.write('<div class="box" id="one">');
+      document.write('Image Name <input style="opacity:0;" id="namebox" type="text"> <br><br>');
+      document.write('<center><img src="' + childData.image_id + '" id="myimg"> <label id="UpProgress"></label> <center>');
+	  ImgName=childData.image_id;
+	  ImgImg=childData.image_id;
+      //document.write('<button id="select">Select Image</button>');
+      //document.write('<button id="upload">Upload Image</button>');
+      document.write('<p><input class="button_format" style=" position: relative;  background-color:#0a2017; margin-top: 10px;width: 300px; height: 32px;  border: none; color: #FFF;  text-transform: uppercase; text-align:center; " type="submit" name="submit" value="Изменить изображение" onclick="vibor();" /></p>');
+      document.write('</div>');
+      document.write('<div class="layer1">');
+      document.write('<center><input type="text" name="autor" placeholder="Введите автора" style="width:475px;margin-top: 25px; " id="autor"></center>');
+	  document.getElementById("autor").value=childData.autor;
+      document.write('<p style="margin-top: 15px; "><b >Жанр: </b>');
+      document.write('<select style="width:475px;height:33px; " id="janr">');
+      document.write('<option value="Басня">Басня</option>');
+      document.write('<option value="Комедия">Комедия</option>');
+      document.write('<option value="Литературная сказка">Литературная сказка</option>');
+      document.write('<option value="Любительский рассказ">Любительский рассказ</option>');
+      document.write('<option value="Новелла">Новелла</option>');
+      document.write('<option value="Ода">Ода</option>');
+      document.write('<option value="Очерк">Очерк</option>');
+      document.write('<option value="Песня">Песня</option>');
+      document.write('<option value="Повесть">Повесть</option>');
+      document.write('<option value="Подростковая литература">Подростковая литература</option>');
+      document.write('<option value="Поэма">Поэма</option>');
+      document.write('<option value="Рассказ">Рассказ</option>');
+      document.write('<option value="Роман">Роман</option>');
+      document.write('<option value="Трагедия">Трагедия</option>');
+      document.write('<option value="Эпиграмма">Эпиграмма</option>');
+      document.write('</select>');
+	  
+	  document.getElementById("janr").value=childData.janr;
+      document.write('<p style="margin-top: 0px; "><b >Статус прочтения: </b>');
+      document.write('<select style="width:475px;height:33px; " id="status">');
+      document.write('<option value="Прочитано">Прочитано</option>');
+      document.write('<option value="Читаю">Читаю</option>');
+      document.write('<option value="Хочу прочитать">Хочу прочитать</option>');
+      document.write('</select>');
+	   document.getElementById("status").value=childData.stat;
+      document.write('<div class="rating-area">');
+      document.write('<input type="radio" id="star-5" name="rating" value="5">');
+      document.write('<label for="star-5" title="Оценка «5»"></label>	');
+      document.write('<input type="radio" id="star-4" name="rating" value="4">');
+      document.write('<label for="star-4" title="Оценка «4»"></label>    ');
+      document.write('<input type="radio" id="star-3" name="rating" value="3">');
+      document.write('<label for="star-3" title="Оценка «3»"></label>  ');
+      document.write('<input type="radio" id="star-2" name="rating" value="2">');
+      document.write('<label for="star-2" title="Оценка «2»"></label>    ');
+      document.write('<input type="radio" id="star-1" name="rating" value="1">');
+      document.write('<label for="star-1" title="Оценка «1»"></label>');
+      document.write('</div>');
+      
+	  
+	  
+      document.write('<p style="margin-top: 15px; "><b >Описание: </b>');
+      document.write('<p><textarea name="opis"  id="opis" style="width:475px;white-space: pre-line; resize: none;"  rows="3" placeholder="Начните писать..."></textarea></p>');
+	  document.getElementById("opis").value=childData.opis;
+	  
+	  document.write('</div>');
+      document.write('<p style="margin-top: 15px; "><b >Отзыв: </b>');
+      document.write('<p><center><textarea name="opin"  id="opin" style="width:950px;white-space: pre-line; resize: none;"  rows="5" placeholder="Напишите свое мнение о книге..."></textarea></center></p>');
+	  document.getElementById("opin").value=childData.opin;
+      
+      document.write('<p><input class="button_format" style=" position: relative; left: 130%; background-color:#0a2017; margin-top: 28px;width: 180px; height: 32px;  border: none; color: #FFF;  text-transform: uppercase; text-align:center; " type="submit" name="submit" value="Сохранить" onclick="save_txt();" /></p>');
+      document.write('</div>');
+      document.write('</div>');
+      document.write('</div>');
+	  
+	  
+	  }
+				
+				rowIndex = rowIndex + 1;
+	
+	
+	
+	
+	});
+    });
+    document.write('</div></body>');
+    var databaseRef = firebase.database().ref('Diary/');
+    var rowIndex = 1;
+    var n = "stud";
+
+    function save_txt() {
+     
+      var uuid = "id" + Math.random().toString(16).slice(2)
+      var janr = document.getElementById('janr').value;
+      var stat = document.getElementById('status').value;
+      var name = document.getElementById('name').value;
+      var autor = document.getElementById('autor').value;
+      var opis = document.getElementById('opis').value;
+      var opin = document.getElementById('opin').value;
+	  
+	  var rad = document.getElementsByName('rating');
+				var ratings;
+				for (var i=0; i<rad.length; i++) {
+					if (rad[i].checked) {
+					ratings = rad[i].value;
+				}
+				}
+				
+				
+      var data = "dvds";
+      var id = "Diary";
+	  
+		var today = new Date();
+		var dd = String(today.getDate()).padStart(2, '0');
+		var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+		var yyyy = today.getFullYear();
+		today = dd + '.' + mm + '.' + yyyy;
+		
+		
+    //  ImgName = document.getElementById('namebox').value;
+	 // alert(ImgImg);
+	 // alert("vfdvdf"+ImgName);
+	  
+      var uploadTask = firebase.storage().ref('ImageDB/' + uuid + ".png").put(files[0]);
+      uploadTask.on('state_changed', function(snapshot) {
+          var progress = (snapshot.bytesTranferred / snapshot.totalBytes) * 100;
+          document.getElementById('UpProgress').innerHTML = 'Upload' + progress + '%';
+        },
+        function(error) {
+          alert('error in saving the image');
+        },
+        function() {
+          uploadTask.snapshot.ref.getDownloadURL().then(function(url) {
+            ImgUrl = url;
+			//alert("ImgUrl="+alert(ImgUrl));
+			
+			
+         
+            firebase.database().ref("Diary/" + key).update({
+              name: name,
+              autor: autor,
+              data: today,
+              opis: opis,
+              id: email,
+              ratings: ratings,
+              opin: opin,
+              janr: janr,
+              stat: stat,
+              image_id: ImgUrl
+            });
+            alert('Книга добавлена в читательский дневник');
+          });
+        });
+     
+    }
+
+    function vibor() {
+     
+      var input = document.createElement('input');
+      input.type = 'file';
+      input.onchange = e => {
+        files = e.target.files;
+        reader = new FileReader();
+        reader.onload = function() {
+          document.getElementById("myimg").src = reader.result;
+        }
+        reader.readAsDataURL(files[0]);
+      }
+      input.click();
+    }
+  </script>
+</body>
